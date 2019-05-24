@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body style="background-color:grey">
+
+<p>Searchterm for multisearch:</p>
+<input id="boxu" autofocus="" type="text">
+
+		<script>
+		var url = "put the link here";
+document.getElementById("boxu").onkeydown = function(e) {searchy(e)};
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+    for(var i = 0; i < hashes.length; i++)
+        {
+         hash = hashes[i].split('=');
+         vars.push(hash[0]);
+         vars[hash[0]] = hash[1];
+         }
+
+     return vars;
+}
+var get = getUrlVars();
+if (get && get != "file://"+document.location.pathname){
+	directSearch(get);
+}
+
+function searchy(e)
+{
+	if (e.which == 13)
+	{
+  	 var q = document.getElementById("boxu").value;
+		 multiSearch(q);
+		 document.getElementById("boxu").value = "";
+	}
+}
+function directSearch(q)
+{
+	multiSearch(q);
+	window.open('', '_self', ''); window.close();
+}
+
+function multiSearch(q){
+	window.open("http://www.forvo.com/word/" + q + "/#ja");
+	window.open("http://jisho.org/words?jap=" + q + "&eng=&dict=edict");
+	window.open("https://sakura-paris.org/dict/大辞林/prefix/" + q);
+	window.open("https://www.google.com/search?as_st=y&tbm=isch&hl=en&as_q=" + q + "&as_epq=&as_oq=&as_eq=&imgsz=&imgar=&imgc=&imgcolor=&imgtype=&cr=countryJP&as_sitesearch=&safe=images&as_filetype=&as_rights=");
+}
+
+</script>
+
+
+
+	</body></html>
